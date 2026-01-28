@@ -1,0 +1,13 @@
+# Abaikan folder environment
+.venv/
+__pycache__/
+
+# Abaikan dataset (karena filenya besar)
+dataset_extracted/
+anime_faces.zip
+
+# Abaikan checkpoint (notebook otomatis nyimpen state)
+.ipynb_checkpoints/
+
+
+ checkpoints/
