@@ -17,7 +17,7 @@ Model ini dibangun berdasarkan arsitektur dasar Radford et al., namun ditingkatk
 | 2 | **Spectral Normalization** | *Miyato et al. (2018)* | Diterapkan pada setiap layer **Discriminator** untuk menstabilkan training dan mencegah gradien meledak. |
 | 3 | **One-Sided Label Smoothing** | *Salimans et al. (2016)* | Target label gambar asli diubah dari **1.0** menjadi **0.9** untuk mencegah Discriminator menjadi *overconfident*. |
 | 4 | **Instance Noise Injection** | *Sønderby et al. (2016)* | Menambahkan **Gaussian Noise** pada input gambar asli untuk mempersulit Discriminator membedakan fitur di awal training. |
-| 5 | **Dropout Regularization** | *Srivastava et al. (2014)* | **(MVP Feature)** Menambahkan `nn.Dropout(0.5)` pada Discriminator untuk mematikan 50% neuron secara acak, memaksa model mencapai **Nash Equilibrium**. |
+| 5 | **Dropout Regularization** | *Srivastava et al. (2014)* | **(MVP Feature)** Menambahkan `nn.Dropout(0.5)` pada Discriminator untuk mematikan 50% neuron secara acak, mencegah overfitting total (akurasi 100%). |
 
 ---
 
@@ -40,7 +40,7 @@ Berikut adalah konfigurasi final yang menghasilkan gambar terbaik:
 
 Berikut adalah perbandingan hasil generate model:
 
-| Epoch 1 (Awal) | Epoch 70 (Final - Nash Equilibrium) |
+| Epoch 1 (Awal) | Epoch 70 (Final Result) |
 | :---: | :---: |
 | ![Epoch 1](results/epoch_1.png) | ![Final](results/epoch_70_final.png) |
 *(Gambar kiri: Noise awal. Gambar kanan: Wajah anime tajam hasil training 70 Epoch)*
@@ -48,11 +48,11 @@ Berikut adalah perbandingan hasil generate model:
 ### 📈 Analisis Grafik Loss
 ![Loss Graph](results/loss_graph.png)
 
-> **Analisis Kritis:**
-> Berkat penerapan **Dropout 0.5** dan **TTUR**, model berhasil mencapai kondisi **Nash Equilibrium**.
-> * Grafik **Loss Discriminator** tidak lagi mendekati 0 (yang menandakan overfitting), melainkan stabil di angka **~0.69 (log 2)**.
-> * Akurasi Discriminator berhasil ditekan dari **96% (Overfit)** menjadi **~50% (Ideal)**.
-> * Hal ini membuktikan bahwa Generator berhasil menghasilkan citra yang sangat realistis sehingga Discriminator kesulitan membedakan antara gambar asli dan palsu (probabilitas tebakan 50:50).
+> **Analisis Hasil (Epoch 70):**
+> Berkat penerapan **Dropout 0.5** dan **TTUR**, model berhasil mencapai stabilitas training yang optimal.
+> * **Akurasi Discriminator:** Stabil di angka **89.03%**. Angka ini menunjukkan Discriminator bekerja sebagai "penilai yang ketat" namun **tidak mengalami overfitting sempurna (100%)**.
+> * **Keseimbangan:** Celah error sekitar 11% dimanfaatkan oleh Generator untuk terus belajar memperbaiki fitur wajah.
+> * **Visual:** Tidak terjadi *Mode Collapse*. Generator berhasil menghasilkan variasi wajah (mata, rambut, ekspresi) yang beragam dan tajam.
 
 ---
 
@@ -69,12 +69,14 @@ Dataset yang digunakan adalah kumpulan wajah anime yang telah di-crop.
 
 Project ini dikembangkan menggunakan Python 3.10 di lingkungan Windows dengan dukungan GPU (CUDA).
 
+> **Catatan:** Repository ini adalah **Versi Revisi/Final** dari project sebelumnya.
+> Repository lama (History): [https://github.com/bagoongyoo/Artificial_Intellegence](https://github.com/bagoongyoo/Artificial_Intellegence)
+
 ### Cara Instalasi
 
 1.  **Clone repository ini:**
     ```bash
-    # Pastikan clone repo yang terbaru ini (bukan versi lama)
-    git clone (https://github.com/FikihRizaldi/DCGAN_anime.git)
+    git clone [https://github.com/FikihRizaldi/DCGAN_anime.git](https://github.com/FikihRizaldi/DCGAN_anime.git)
     cd DCGAN_anime
     ```
 
@@ -92,10 +94,6 @@ Project ini dikembangkan menggunakan Python 3.10 di lingkungan Windows dengan du
     ```bash
     pip install -r requirements.txt
     ```
-> **Catatan:** Repository ini adalah **Versi Revisi/Final** dari project sebelumnya.
-
-
-> Repository lama (History): [https://github.com/bagoongyoo/Artificial_Intellegence](https://github.com/bagoongyoo/Artificial_Intellegence)
 
 ## 🚀 Cara Menjalankan
 
