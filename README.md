@@ -92,7 +92,9 @@ Project ini dikembangkan menggunakan Python 3.10 di lingkungan Windows dengan du
     ```bash
     pip install -r requirements.txt
     ```
-    > **Catatan:** Repository ini adalah **Versi Revisi/Final** dari project sebelumnya.
+> **Catatan:** Repository ini adalah **Versi Revisi/Final** dari project sebelumnya.
+
+
 > Repository lama (History): [https://github.com/bagoongyoo/Artificial_Intellegence](https://github.com/bagoongyoo/Artificial_Intellegence)
 
 ## 🚀 Cara Menjalankan
