@@ -73,8 +73,9 @@ Project ini dikembangkan menggunakan Python 3.10 di lingkungan Windows dengan du
 
 1.  **Clone repository ini:**
     ```bash
-    git clone [https://github.com/bagoongyoo/Artificial_Intellegence.git](https://github.com/bagoongyoo/Artificial_Intellegence.git)
-    cd Artificial_Intellegence
+    # Pastikan clone repo yang terbaru ini (bukan versi lama)
+    git clone (https://github.com/FikihRizaldi/DCGAN_anime.git)
+    cd DCGAN_anime
     ```
 
 2.  **Buat Virtual Environment (Opsional tapi Recommended):**
@@ -87,11 +88,12 @@ Project ini dikembangkan menggunakan Python 3.10 di lingkungan Windows dengan du
     ```
 
 3.  **Install Dependencies:**
-    Jalankan perintah berikut untuk menginstall library yang dibutuhkan:
+    Jalankan perintah berikut:
     ```bash
     pip install -r requirements.txt
     ```
-    *(Pastikan file `requirements.txt` sudah ada di folder project. Isi utamanya: `torch`, `torchvision`, `matplotlib`, `numpy`)*
+    > **Catatan:** Repository ini adalah **Versi Revisi/Final** dari project sebelumnya.
+> Repository lama (History): [https://github.com/bagoongyoo/Artificial_Intellegence](https://github.com/bagoongyoo/Artificial_Intellegence)
 
 ## 🚀 Cara Menjalankan
 
